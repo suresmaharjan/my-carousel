@@ -1,15 +1,21 @@
-import {Card} from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
-export const SliderItem=(props)=>{
-    return(
-        <Card style={{ width: '18rem' }}>
-        <Card.Body>
-          <Card.Title>{props.by}</Card.Title>
-          <Card.Text>
-           {props.quote}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    )
+
+
+export const SliderItem = ({ item, modal , data}) => {
+
+  return (
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title>{item.by}</Card.Title>
+        <Card.Text>
+          {item.quote}
+        </Card.Text>
+        <Button variant="dark" onClick={function(){modal();data();}}>
+           View More
+        </Button>
+      </Card.Body>
+    </Card>
+  )
 }
 
