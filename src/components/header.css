@@ -1,18 +1,11 @@
-/*----------bootstrap-navbar-css------------*/
-
-
- li {
-	list-style-type: none;
-	float: left;
+.light{
+	background: linear-gradient(to bottom ,rgba(0,0,0,1) 0% , rgba(0,0,0,.8) 90%);
 }
 
-/* .fixed{
-	position:fixed;
-	top:0;
-	left:0;
-	width: 100%;
-	background-color: #000;
-} */
+.dark{
+	background: #000;
+}
+
 #basic-navbar-nav a{
 	color: rgba(255,255,255,0.5);
     text-decoration: none;

@@ -1,25 +1,15 @@
 .slider{
     position: relative;
-    max-width: 1140px;
+    padding:60px 0;
     overflow: hidden;
-    margin: 0 auto;
-    ul{
+    .container{
+        overflow: hidden;
+    }
+    .wrapper{
         display: flex;
         width: max-content;
         transition:all .3s ease-in-out;
-        li{
-            width:300px;
-            height: 300px;
-            background-color: red;
-            display: flex;
-            justify-content:center;
-            align-items:center;
-            font-size:40px;
-            color:#fff;
-            &:nth-child(odd){
-                background-color: green;
-            }
-        }
+       
     }
     .prev,
     .next{
@@ -27,14 +17,19 @@
         top:0;
         bottom:0;
         margin: auto;
-        font-size: 30px;
+        font-size: 36px;
     }
 
     .prev{
-        left:0;
+        left:20px;
     }
 
     .next{
-        right:0;
+        right:20px;
+    }
+
+    .card{
+        margin:0 15px;
+        cursor: pointer;
     }
 }
