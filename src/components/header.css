@@ -1,0 +1,85 @@
+/*----------bootstrap-navbar-css------------*/
+
+
+ li {
+	list-style-type: none;
+	float: left;
+}
+
+/* .fixed{
+	position:fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	background-color: #000;
+} */
+#basic-navbar-nav a{
+	color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+	display: flex;
+	align-items: center;
+	padding-left: 15px;
+    padding-right: 15px;
+}
+
+#basic-navbar-nav a svg{
+	font-size: 24px;
+	margin-right: 5px;
+}
+
+#basic-navbar-nav .active{
+	color: #fff !important;
+	transition: all 0.3s;
+}
+
+#basic-navbar-nav{
+	position:relative;
+	z-index: 0;
+	/* overflow: hidden; */
+}
+
+
+
+@media(min-width:992px){
+	.navbar{
+		padding: 10px 15px;
+	}
+
+	#basic-navbar-nav{
+		flex-grow: 1;
+    	justify-content: flex-end;
+	}
+}
+
+@media (max-width: 991px){
+
+	#basic-navbar-nav{
+		/* padding-top: 15px; */
+	}
+	.navbar{
+		padding:10px 0;
+	}
+	.navbar-brand{
+		margin-left: 15px;
+	}
+	.navbar-toggler{
+		margin-right: 15px;
+	}
+	.navbar-nav {
+		overflow:hidden;
+		position: relative;
+	}
+	
+	#basic-navbar-nav  a{
+		padding: 12px 30px;
+	}
+
+	.placeHolder{
+		height:15px;
+		display: block;
+	}
+}
