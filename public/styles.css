@@ -6,6 +6,9 @@
 body{
     overflow-x: hidden;
 }
+section{
+    padding:100px 0;
+}
 
 .btn-dark{
     background-color:#000 !important;

@@ -11,8 +11,8 @@ const HeroImg = styled.div`
     position:relative;
 
     img{
-        width:100vw;
-        height:100vh;
+        width:100%;
+        height:100%;
         object-fit:cover;
     }
     
@@ -29,8 +29,8 @@ const HeroImg = styled.div`
 export const Featured = () => {
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        fetch("https://source.unsplash.com/random")
-        .then(res => res.status === 200  && setLoading(false))
+            fetch("https://source.unsplash.com/random")
+            .then(res => res.status === 200  && setLoading(false))
     })
 
 
