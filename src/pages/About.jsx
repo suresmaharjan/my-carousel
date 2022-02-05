@@ -5,38 +5,73 @@ import CardItem from "../components/CardItem";
 import {
     Container,
     Row,
-    Col
+    Col,
+    Button
 } from "react-bootstrap";
+import { Prev } from "react-bootstrap/esm/PageItem";
 
 
 class About extends React.Component {
     state = {
-        users: []
+        isLoading: false,
+        users: [],
+        page: 0,
+        error:""
     }
     componentDidMount() {
-        fetch("https://randomuser.me/api/?page=0&results=8")
-            .then(res => res.json())
-            .then(data => this.setState({ users: data.results }))
+        this.loadUser()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.page !== this.state.page) {
+            this.loadUser()
+        }
+    }
+
+
+
+    loadMore = () => this.setState(prevState => ({ page: prevState.page + 1 }))
+
+
+    loadUser = async () => {
+        try {
+            this.setState({ isLoading: true })
+            await fetch(`https://randomuser.me/api/?page=${this.state.page}&results=4`)
+                .then(res => res.json())
+                .then(data =>
+                    this.setState((prevState) =>
+                        ({ users: [...prevState.users, ...data.results]})));
+        }
+        catch(err){
+            if(err) throw err;
+            // if(err) this.setState({error:"Error while loading data. Try again later."})
+        }
+
+        finally{
+            this.setState({ isLoading: false })
+        }
     }
 
     render() {
-        { console.log(this.state.users) }
         return (
             <>
                 <section>
                     <Container>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae nisi voluptas voluptate doloribus labore eos, incidunt, rerum adipisci quas enim, sed impedit quasi inventore hic repellat ut alias asperiores fugiat?
-
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro quis fugit officia, ducimus quidem alias eligendi hic aspernatur non quo fuga fugiat molestiae consequatur laudantium, quae suscipit dicta eos dolorum!
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas provident exercitationem earum mollitia ab optio. Fugiat, perspiciatis inventore. Aut porro, quam labore nesciunt laboriosam non repellendus reiciendis placeat suscipit veniam.
+                        <Row>
+                            {this.state.users.map((user, index) => <CardItem key={index} user={user} />)}
+                            {/* {this.state.error && <p className="err">{this.state.error}</p>} */}
+                        </Row>
+                        <Row>
+                            <Col className="text-center">
+                                <Button
+                                    variant="dark"
+                                    className="load-more"
+                                    onClick={this.loadMore}
+                                >{this.state.isLoading ? "Loading..." : "Load More"}</Button>
+                            </Col>
+                        </Row>
                     </Container>
                 </section>
-                <Container>
-                    <Row>
-                        {this.state.users.map((user, index) => <CardItem key={index} user={user} />)}
-                    </Row>
-                </Container>
             </>
         )
     }
